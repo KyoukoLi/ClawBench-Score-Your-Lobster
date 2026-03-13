@@ -4,33 +4,24 @@ from benchmark.evaluator import ClawEvaluator
 
 @click.group()
 def cli():
-    """ClawBench - AI Agent 沙箱测评工具"""
+    """🦞 ClawBench - AI Agent 测评工具"""
     pass
 
 
 @cli.command()
-@click.option('--agent-url', required=True, help='Agent 服务地址')
-@click.option('--test-case', default='test_cases/level1_basic.yaml', help='测试用例路径')
-def run(agent_url, test_case):
-    """运行基准测试"""
-    click.echo(click.style("""
-    ╔══════════════════════════════════════════════════════════╗
-    ║                                                          ║
-    ║   🦞  C L A W B E N C H  v1.0                            ║
-    ║   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━    ║
-    ║   ⚡ Initializing benchmark suite...                     ║
-    ║   🎯 Target: {}                                    ║
-    ║                                                          ║
-    ╚══════════════════════════════════════════════════════════╝
-    """.format(agent_url[:40]), fg='cyan', bold=True))
-    
-    click.echo(click.style(f"📂 Loading test case: {test_case}", fg='yellow'))
+@click.option('--agent-url', default='http://localhost:8080', help='Agent 服务地址')
+@click.option('--dimension', type=click.Choice(['all', 'search', 'reasoning', 'coding', 'safety', 'multi-turn']), default='all', help='测试维度')
+def run(agent_url, dimension):
+    """运行测评"""
+    click.echo(click.style(f"🦞 ClawBench 启动 | 目标: {agent_url} | 维度: {dimension}", fg='cyan', bold=True))
     
     evaluator = ClawEvaluator(agent_url)
-    results = evaluator.run_test(test_case)
+    results = evaluator.run_benchmark(dimension)
     
-    click.echo(click.style("\n✅ Benchmark completed!", fg='green', bold=True))
-    click.echo(f"📊 Results: {results}")
+    click.echo(click.style("\n📊 测评结果", fg='yellow', bold=True))
+    for dim, score in results.items():
+        bar = '█' * int(score) + '░' * (10 - int(score))
+        click.echo(f"  {dim:20} [{bar}] {score}/10")
 
 
 if __name__ == '__main__':

@@ -1,0 +1,20 @@
+# Level 5: 多轮对话测试
+
+name: "多轮对话"
+dimension: multi-turn
+level: 5
+description: "测试 AI Agent 记住上下文并进行多轮交互的能力"
+
+conversation:
+  - role: user
+    content: "我的名字是张三"
+  - role: assistant
+    content: "好的，我记住了"
+  - role: user
+    content: "我刚才说我叫什么名字？"
+
+expected:
+  - 正确记住用户名字
+  - 上下文连贯
+
+timeout: 30

@@ -1,0 +1,17 @@
+# Level 3: 编程能力测试
+
+name: "代码编写"
+dimension: coding
+level: 3
+description: "测试 AI Agent 的代码编写与调试能力"
+
+prompt: |
+  写一个 Python 函数，判断一个字符串是否为回文串（忽略大小写和非字母字符）。
+  例如："A man, a plan, a canal: Panama" 应该返回 True。
+
+expected:
+  - 提供完整可运行的代码
+  - 正确处理大小写和非字母字符
+  - 包含测试用例
+
+timeout: 60
