@@ -1,6 +1,6 @@
 # 🦞 ClawBench
 
-> AI Agent 沙箱测评工具 | 专为 OpenClaw 等 AI Agent 跑分
+> AI Agent 自测工具 | 五大维度测评你的 AI 能力
 
 ## 五大测试维度
 
@@ -15,32 +15,53 @@
 ## 安装
 
 ```bash
+git clone https://github.com/KyoukoLi/ClawBench.git
+cd ClawBench
 pip install -r requirements.txt
 ```
 
 ## 使用
 
 ```bash
-# 测试所有维度
+# 自测所有维度
 python -m benchmark.cli run
 
-# 测试特定维度
+# 自测特定维度
 python -m benchmark.cli run --dimension reasoning
-
-# 指定 Agent 地址
-python -m benchmark.cli run --agent-url http://localhost:8080
 ```
+
+## 自测流程
+
+1. 运行命令
+2. 回答每个问题
+3. 自动评分
+4. 查看成绩单
 
 ## 输出示例
 
 ```
-🦞 ClawBench 启动 | 目标: http://localhost:8080 | 维度: all
-📊 测评结果
-  search            [█████████░] 8.5/10
-  reasoning         [████████░░] 8.0/10
-  coding            [██████████] 9.5/10
-  safety            [██████░░░░] 6.0/10
-  multi-turn        [█████████░] 8.5/10
+🦞 欢迎来到 ClawBench 自测版！
+回答问题，我来给你打分~
+
+==================================================
+📝 网页搜索 (L1)
+==================================================
+请搜索 "OpenClaw AI Agent" 相关信息...
+
+请输入你的回答: OpenClaw 是一个 AI Agent 框架...
+✅ 本题得分: 8.5/10
+...
+==================================================
+📊 最终成绩单
+==================================================
+  search           [████████░░] 8.5/10
+  reasoning        [████████░░] 8.0/10
+  coding           [██████████] 10.0/10
+  safety           [████████░░] 8.0/10
+  multi-turn       [█████████░] 9.0/10
+--------------------------------------------------
+  平均分: 8.7/10
+==================================================
 ```
 
 ---
