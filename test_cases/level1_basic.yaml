@@ -1,0 +1,28 @@
+# Level 1: 基础网页搜索能力测试
+
+test_name: "基础网页搜索"
+level: 1
+description: "测试 AI Agent 的基础网页搜索与信息提取能力"
+
+dimensions:
+  - skill_proficiency
+
+prompt: |
+  请搜索 "OpenClaw AI Agent" 相关信息，并总结其主要功能和特点。
+
+expected_abilities:
+  - 能够调用搜索工具
+  - 能够提取关键信息
+  - 能够生成结构化总结
+
+evaluation:
+  match_keywords:
+    - "OpenClaw"
+    - "AI"
+    - "Agent"
+  
+  max_response_time: 30  # 秒
+
+scoring:
+  task_completion: 1.0   # 基础分
+  skill_proficiency: 1.0 # 技能分
